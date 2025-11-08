@@ -17,9 +17,8 @@ This project solves the problem by building a centralized, real-time data platfo
 The pipeline is built on a serverless AWS stack and follows the **Medallion Architecture**:
 1.  **Data Generation:** A containerized Python app on **Amazon ECS** simulates real-time, messy flight data.
 2.  **Bronze Layer (Raw Ingestion):** Raw JSON is ingested by **Amazon Kinesis Data Streams**. A parallel **Kinesis Firehose** stream archives every raw record to an **S3 Raw Zone**.
-3.  **Silver Layer (Clean & Transform):** An **AWS Glue** streaming job reads from Kinesis, cleans and transforms the data, and loads it into an **S3 Cleaned Zone** (as Parquet) and a **Redshift Staging Table**.
-4.  **Gold Layer (Analytics Model):** A scheduled SQL process within **Amazon Redshift** transforms the staged data into a final, performance-optimized **star schema** (fact and dimension tables).
-5.  **Visualization:** **AWS QuickSight** connects to the Gold Layer in Redshift via a secure, private VPC connection to provide interactive dashboards.
+3.  **Silver Layer (Clean & Transform):** An **AWS Glue** streaming job reads from Kinesis, cleans and transforms the data, and loads it into an **S3 Cleaned Zone** (as Parquet) and a **Redshift Staging Table**
+4.  **Visualization:** **AWS QuickSight** connects to the Gold Layer in Redshift via a secure, private VPC connection to provide interactive dashboards.
 
 ---
 ## ✨ Key Features
